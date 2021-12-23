@@ -4,6 +4,10 @@ const overview = document.querySelector(".overview");
 const username = "oliverijoe";
 // Unordered list to display the repos list
 const repoList = document.querySelector(".repo-list");
+// Where repo information will appear
+const repoInfoAppear = document.querySelector(".repos");
+// Where individual repo data will appear
+const individualRepoData = document.querySelector(".repo-data");
 
 // API for gathering user info
 const gitUserInfo = async function () {
@@ -16,7 +20,7 @@ const gitUserInfo = async function () {
 // Displays user info
 const displayUserInfo = function (data) {
     const div = document.createElement("div");
-    div.classList.add(".user-info");
+    div.classList.add("user-info");
     div.innerHTML = 
         `<figure>
             <img alt="user avatar" src=${data.avatar_url} />
@@ -49,3 +53,9 @@ const displayRepoInfo = function (repos) {
     }
 };
 
+repoList.addEventListener("click", function (e) {
+    if (e.target.matches("h3")) {
+        const repoName = e.target.innerText;
+        console.log(repoName);
+    }
+});
